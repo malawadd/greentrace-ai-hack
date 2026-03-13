@@ -16,8 +16,8 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from pydantic_ai.models.openai import OpenAIModel
-from pydantic_ai.providers.openai import OpenAIProvider
+from pydantic_ai.models.groq import GroqModel
+from pydantic_ai.providers.groq import GroqProvider
 
 from app.schemas.retrieval import RetrievalRequest, RetrievalResponse
 
@@ -84,12 +84,9 @@ class PydanticAIOrchestrator:
         self._agent: Agent[None, ESGAnalysisResult] | None = None  # type: ignore[type-arg]
 
         if self._api_key:
-            model = OpenAIModel(
+            model = GroqModel(
                 self._model_name,
-                provider=OpenAIProvider(
-                    base_url="https://api.groq.com/openai/v1",
-                    api_key=self._api_key,
-                ),
+                provider=GroqProvider(api_key=self._api_key),
             )
             self._agent = Agent(
                 model,

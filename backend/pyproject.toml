@@ -7,5 +7,5 @@ dependencies = [
   "fastapi>=0.124.2",
   "qdrant-client[fastembed]>=1.14.2",
   "uvicorn>=0.38.0",
-  "pydantic-ai[openai]>=0.1.0",
+  "pydantic-ai[groq]>=0.1.0",
 ]
