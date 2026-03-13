@@ -1,6 +1,6 @@
 {
     "$schema": "https://apify.com/schemas/v1/input.ide.json",
-    "title": "Company ESG search orchestrator",
+    "title": "GreenTrace-scrapper input",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
@@ -50,6 +50,44 @@
             "items": {
                 "type": "string"
             }
+        },
+        "enable_fast_crawler": {
+            "title": "Enable fast crawler",
+            "type": "boolean",
+            "description": "Run 6sigmag/fast-website-content-crawler after Google search. Disabled by default.",
+            "editor": "checkbox",
+            "default": false
+        },
+        "enable_jina_ai": {
+            "title": "Enable Jina AI",
+            "type": "boolean",
+            "description": "Fetch page content from jina.ai for each forwarded URL.",
+            "editor": "checkbox",
+            "default": true
+        },
+        "jina_api_key": {
+            "title": "Jina API key",
+            "type": "string",
+            "description": "Optional jina.ai API key. If omitted, requests are attempted without authentication.",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "jina_engine": {
+            "title": "Jina engine",
+            "type": "string",
+            "description": "Choose which jina.ai engine to use.",
+            "editor": "select",
+            "default": "direct",
+            "enum": ["direct", "browser"],
+            "enumTitles": ["Direct", "Browser"]
+        },
+        "jina_timeout_secs": {
+            "title": "Jina timeout",
+            "type": "integer",
+            "description": "Timeout header passed to jina.ai in seconds.",
+            "editor": "number",
+            "default": 200,
+            "minimum": 1
         }
     },
     "required": [

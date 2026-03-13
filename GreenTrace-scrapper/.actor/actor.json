@@ -2,8 +2,8 @@
     "$schema": "https://apify.com/schemas/v1/actor.ide.json",
     "actorSpecification": 1,
     "name": "my-actor-1",
-    "title": "Company ESG search orchestrator",
-    "description": "Searches Google for one company, forwards discovered links into a fast content crawler, and stores the combined output.",
+    "title": "GreenTrace-scrapper",
+    "description": "Searches Google for one company, optionally runs the fast website crawler, optionally enriches pages with jina.ai, and stores the combined output.",
     "version": "0.0",
     "buildTag": "latest",
     "meta": {

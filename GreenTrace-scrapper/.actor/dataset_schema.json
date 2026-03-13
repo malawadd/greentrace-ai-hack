@@ -10,10 +10,13 @@
                     "company",
                     "query",
                     "overall_status",
+                    "enable_fast_crawler",
+                    "enable_jina_ai",
                     "results_per_page",
                     "max_pages_per_query",
                     "google_stage",
                     "crawler_stage",
+                    "jina_stage",
                     "forwarded_urls"
                 ]
             },
@@ -32,6 +35,14 @@
                         "label": "Status",
                         "format": "text"
                     },
+                    "enable_fast_crawler": {
+                        "label": "Fast crawler enabled",
+                        "format": "boolean"
+                    },
+                    "enable_jina_ai": {
+                        "label": "Jina enabled",
+                        "format": "boolean"
+                    },
                     "results_per_page": {
                         "label": "Results / page",
                         "format": "number"
@@ -46,6 +57,10 @@
                     },
                     "crawler_stage": {
                         "label": "Crawler stage",
+                        "format": "object"
+                    },
+                    "jina_stage": {
+                        "label": "Jina stage",
                         "format": "object"
                     },
                     "forwarded_urls": {
