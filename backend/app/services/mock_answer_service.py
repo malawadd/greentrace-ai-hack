@@ -15,11 +15,24 @@ class MockAnswerService:
     def answer(self, request: RetrievalRequest) -> MockAnswerResponse:
         retrieval = self.retrieval.retrieve(request)
         orchestration = self.orchestrator.orchestrate(request, retrieval)
-        answer = self.answerer.generate(request, retrieval)
+
+        # Use real LLM verdict when available, fall back to mock
+        if orchestration.get("verdict"):
+            answer_status = "grounded"
+            answer = (
+                f"Verdict: {orchestration['verdict']}. "
+                f"Claim: {orchestration.get('claim', request.question)}. "
+                f"Supporting evidence: {orchestration.get('supporting_evidence', 'N/A')}. "
+                f"Contradicting evidence: {orchestration.get('contradicting_evidence', 'N/A')}."
+            )
+        else:
+            answer_status = "mocked"
+            answer = self.answerer.generate(request, retrieval)
+
         return MockAnswerResponse(
             company=request.company,
             question=request.question,
-            answer_status="mocked",
+            answer_status=answer_status,
             answer=answer,
             retrieval=retrieval,
             orchestration=orchestration,
